@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101a22">
+  <title>Sport Training</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-mark">ST</div>
+      <div>
+        <div class="brand">SPORT TRAINING</div>
+        <div class="muted tiny">Твой тренировочный кабинет</div>
+      </div>
+      <div class="status-dot" title="Приложение готово"></div>
+    </header>
+
+    <main>
+      <section class="welcome">
+        <p class="eyebrow">ПЛАН ПОДГОТОВКИ</p>
+        <h1>Стань сильнее<br><span>шаг за шагом.</span></h1>
+        <p class="muted">Бег на 3000 м · Подтягивания · 3 занятия в неделю</p>
+      </section>
+
+      <section class="stats-grid">
+        <article class="stat-card">
+          <span class="stat-icon">🏃</span>
+          <div class="stat-label">Бег 3000 м</div>
+          <div class="stat-value" id="run-result">—</div>
+          <div class="stat-note">Твой последний результат</div>
+        </article>
+        <article class="stat-card">
+          <span class="stat-icon">💪</span>
+          <div class="stat-label">Подтягивания</div>
+          <div class="stat-value" id="pull-result">—</div>
+          <div class="stat-note">Твой последний результат</div>
+        </article>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <div><p class="eyebrow">ТВОЯ НЕДЕЛЯ</p><h2>План тренировок</h2></div>
+          <span class="pill">3 дня</span>
+        </div>
+        <div class="workout-list">
+          <article class="workout-card">
+            <div class="day-badge">ПН</div>
+            <div class="workout-info"><h3>Бег + техника</h3><p>Спокойный бег, разминка и лёгкая работа над техникой</p><span class="tag">Выносливость</span></div>
+            <button class="arrow-btn" data-workout="monday" aria-label="Открыть">›</button>
+          </article>
+          <article class="workout-card">
+            <div class="day-badge">СР</div>
+            <div class="workout-info"><h3>Силовая подготовка</h3><p>Подтягивания по уровню, корпус и восстановление</p><span class="tag">Сила</span></div>
+            <button class="arrow-btn" data-workout="wednesday" aria-label="Открыть">›</button>
+          </article>
+          <article class="workout-card">
+            <div class="day-badge">СБ</div>
+            <div class="workout-info"><h3>Бег на выносливость</h3><p>Постепенная работа над комфортным темпом</p><span class="tag">Бег</span></div>
+            <button class="arrow-btn" data-workout="saturday" aria-label="Открыть">›</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading"><div><p class="eyebrow">ОТСЛЕЖИВАНИЕ</p><h2>Записать результат</h2></div></div>
+        <div class="record-card">
+          <label for="run-time">Бег 3000 м — время (например, 15:30)</label>
+          <input id="run-time" type="text" inputmode="numeric" placeholder="мин:сек" maxlength="5">
+          <label for="pull-count">Подтягивания — количество</label>
+          <input id="pull-count" type="number" min="0" max="100" placeholder="Например, 5">
+          <button id="save-result" class="primary-btn">Сохранить результаты</button>
+          <p id="save-message" class="form-message" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading"><div><p class="eyebrow">ВАЖНО</p><h2>Тренируйся разумно</h2></div></div>
+        <div class="notice">
+          <p>Начинай с комфортного уровня, делай разминку и оставляй время на отдых. Не тренируйся через боль, головокружение или плохое самочувствие. При необходимости обсуди нагрузку с тренером или преподавателем.</p>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <a class="nav-item active" href="#home"><span>⌂</span>Главная</a>
+      <a class="nav-item" href="#plan"><span>▦</span>План</a>
+      <a class="nav-item" href="#results"><span>↗</span>Результаты</a>
+    </nav>
+  </div>
+
+  <div class="modal-backdrop" id="workout-modal" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" id="modal-close" aria-label="Закрыть">×</button>
+      <p class="eyebrow">ТРЕНИРОВКА</p>
+      <h2 id="modal-title">План занятия</h2>
+      <div id="modal-content"></div>
+      <button class="primary-btn" id="complete-workout">Отметить выполненной</button>
+    </section>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
